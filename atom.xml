@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://xiaoqianxin33.github.io</id>
+    <title>Gridea</title>
+    <updated>2021-04-21T02:34:32.439Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://xiaoqianxin33.github.io"/>
+    <link rel="self" href="https://xiaoqianxin33.github.io/atom.xml"/>
+    <subtitle>温故而知新</subtitle>
+    <logo>https://xiaoqianxin33.github.io/images/avatar.png</logo>
+    <icon>https://xiaoqianxin33.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2021, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[Flutter填坑]]></title>
+        <id>https://xiaoqianxin33.github.io/post/flutter-tian-keng/</id>
+        <link href="https://xiaoqianxin33.github.io/post/flutter-tian-keng/">
+        </link>
+        <updated>2021-04-21T02:33:46.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>引入依赖之后运行iOS不成功，是由pod缓存导致。<br>
+解决办法为修改Podfile文件最后一段</li>
+</ol>
+<pre><code>post_install do |installer|
+installer.pods_project.targets.each do |target|
+  flutter_additional_ios_build_settings(target)
+  target.build_configurations.each do |config|
+  config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET' #Remove custom deployment targets
+  end
+end
+end
+</code></pre>
+<ol start="2">
+<li>showDialog方法中自定义的widget设置 decoration圆边无效。<br>
+解决方案为<pre><code>Material(
+  type: MaterialType.card,
+  child:....
+)
+</code></pre>
+</li>
+<li>新建混合开发项目运行iOS RUN启动崩溃，解决方法为</li>
+</ol>
+<pre><code>编辑Scheme的Diagnostics，将API Validation选项设置为不选。
+</code></pre>
+<ol start="4">
+<li>Button,LinkWell水波纹效果被背景色覆盖问题。<br>
+解决方法为背景色用Lnk控件设置。</li>
+</ol>
+<pre><code>Ink(
+      color: Colors.white,
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =&gt; PlayScreen(device.content)));
+        },
+ )
+</code></pre>
+<ol start="5">
+<li>
+<p>Flutter调试过程的错误提醒都要注意修复，虽然在测试模式下看似没问题，但是如果不修复打包成Release安装后安卓端会呈现灰屏，无法使用。</p>
+</li>
+<li>
+<p>Xcode Archive的时候由于bitcode不成功，在pod里面将所有引入的pod的bitcode设置为false.</p>
+</li>
+</ol>
+]]></content>
+    </entry>
+</feed>
