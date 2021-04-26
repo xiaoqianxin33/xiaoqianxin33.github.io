@@ -2,13 +2,55 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xiaoqianxin33.github.io</id>
     <title>肖前欣的博客</title>
-    <updated>2021-04-21T02:40:10.428Z</updated>
+    <updated>2021-04-26T02:38:43.774Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xiaoqianxin33.github.io"/>
     <link rel="self" href="https://xiaoqianxin33.github.io/atom.xml"/>
     <logo>https://xiaoqianxin33.github.io/images/avatar.png</logo>
     <icon>https://xiaoqianxin33.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 肖前欣的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[Android源码编译填坑]]></title>
+        <id>https://xiaoqianxin33.github.io/post/android-yuan-ma-bian-yi-tian-keng/</id>
+        <link href="https://xiaoqianxin33.github.io/post/android-yuan-ma-bian-yi-tian-keng/">
+        </link>
+        <updated>2021-04-26T02:36:59.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>编译Linux内核时报错，主要是MacOS是大小写不敏感的文件系统。<br>
+解决方案：新建磁盘分区，选择大小写敏感。</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Android拾遗 - 修改启动桌面]]></title>
+        <id>https://xiaoqianxin33.github.io/post/android-shi-yi-xiu-gai-qi-dong-zhuo-mian/</id>
+        <link href="https://xiaoqianxin33.github.io/post/android-shi-yi-xiu-gai-qi-dong-zhuo-mian/">
+        </link>
+        <updated>2021-04-25T02:13:38.000Z</updated>
+        <content type="html"><![CDATA[<p>针对Firefly开发板android 7.0 版本</p>
+<ol>
+<li>修改自己应用的manifest，添加filter</li>
+</ol>
+<pre><code>&lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+&lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
+&lt;category android:name=&quot;android.intent.category.HOME&quot; /&gt;
+&lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt; 
+</code></pre>
+<ol start="2">
+<li>ADB安装自己的应用</li>
+<li>依次输入指令</li>
+</ol>
+<pre><code>adb shell
+su
+pm disable-user --user 0 com.android.launcher3
+</code></pre>
+<p>此指令输入完毕后会禁用系统桌面，从而启动自动进入你自己设置的应用。</p>
+<hr>
+<p>注：恢复桌面的指令为</p>
+<pre><code>pm enable --user 0 com.android.launcher3
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Flutter填坑]]></title>
         <id>https://xiaoqianxin33.github.io/post/flutter-tian-keng/</id>
