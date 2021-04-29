@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xiaoqianxin33.github.io</id>
     <title>肖前欣的博客</title>
-    <updated>2021-04-26T02:38:43.774Z</updated>
+    <updated>2021-04-29T07:06:52.924Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xiaoqianxin33.github.io"/>
     <link rel="self" href="https://xiaoqianxin33.github.io/atom.xml"/>
@@ -18,6 +18,25 @@
         <content type="html"><![CDATA[<ol>
 <li>编译Linux内核时报错，主要是MacOS是大小写不敏感的文件系统。<br>
 解决方案：新建磁盘分区，选择大小写敏感。</li>
+<li>编译错误-build stopped: subcommand failed.<br>
+解决方案：一般是由于服务器进程 打开文件数受限制
+<ol>
+<li>1.vim /etc/security/limits.conf 添加如下的行</li>
+</ol>
+<pre><code>    # 解除服务器所有用户文件数 进程限制
+    *             soft       nofile      10240
+    *             hard       nofile      10240
+    *             soft       noproc      10240
+    *             hard       noproc      10240
+</code></pre>
+<ol start="2">
+<li>保存后，再输入ulimit -n 10240回车即可生效。</li>
+<li>提示 ulimit 命令 执行：<pre><code>sudo sh -c &quot;ulimit -n 65535 &amp;&amp; exec su $LOGNAME&quot;
+</code></pre>
+再执行第二个步骤即可.</li>
+<li>使用ulimit -a可以检查查看！</li>
+</ol>
+</li>
 </ol>
 ]]></content>
     </entry>

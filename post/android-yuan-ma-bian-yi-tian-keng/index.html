@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Android源码编译填坑 | 肖前欣的博客</title>
-<link rel="shortcut icon" href="https://xiaoqianxin33.github.io/favicon.ico?v=1619404704861">
+<link rel="shortcut icon" href="https://xiaoqianxin33.github.io/favicon.ico?v=1619680001363">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://xiaoqianxin33.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="Android源码编译填坑 | 肖前欣的博客 - Atom Feed" href="https://xiaoqianxin33.github.io/atom.xml">
@@ -14,8 +14,8 @@
     <meta name="description" content="
 编译Linux内核时报错，主要是MacOS是大小写不敏感的文件系统。
 解决方案：新建磁盘分区，选择大小写敏感。
-
-" />
+编译错误-build stopped: subcommand failed.
+解决方案：一般是由于服务器进程 打开文件数受限制..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -25,7 +25,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://xiaoqianxin33.github.io">
-  <img class="avatar" src="https://xiaoqianxin33.github.io/images/avatar.png?v=1619404704861" alt="">
+  <img class="avatar" src="https://xiaoqianxin33.github.io/images/avatar.png?v=1619680001363" alt="">
   </a>
   <h1 class="site-title">
     肖前欣的博客
@@ -95,6 +95,25 @@
                 <ol>
 <li>编译Linux内核时报错，主要是MacOS是大小写不敏感的文件系统。<br>
 解决方案：新建磁盘分区，选择大小写敏感。</li>
+<li>编译错误-build stopped: subcommand failed.<br>
+解决方案：一般是由于服务器进程 打开文件数受限制
+<ol>
+<li>1.vim /etc/security/limits.conf 添加如下的行</li>
+</ol>
+<pre><code>    # 解除服务器所有用户文件数 进程限制
+    *             soft       nofile      10240
+    *             hard       nofile      10240
+    *             soft       noproc      10240
+    *             hard       noproc      10240
+</code></pre>
+<ol start="2">
+<li>保存后，再输入ulimit -n 10240回车即可生效。</li>
+<li>提示 ulimit 命令 执行：<pre><code>sudo sh -c &quot;ulimit -n 65535 &amp;&amp; exec su $LOGNAME&quot;
+</code></pre>
+再执行第二个步骤即可.</li>
+<li>使用ulimit -a可以检查查看！</li>
+</ol>
+</li>
 </ol>
 
               </div>
