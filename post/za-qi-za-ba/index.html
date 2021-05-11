@@ -2,20 +2,21 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Android源码编译填坑 | 肖前欣的博客</title>
+<title>杂七杂八 | 肖前欣的博客</title>
 <link rel="shortcut icon" href="https://xiaoqianxin33.github.io/favicon.ico?v=1620702139889">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://xiaoqianxin33.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="Android源码编译填坑 | 肖前欣的博客 - Atom Feed" href="https://xiaoqianxin33.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="杂七杂八 | 肖前欣的博客 - Atom Feed" href="https://xiaoqianxin33.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
     <meta name="description" content="
-编译Linux内核时报错，主要是MacOS是大小写不敏感的文件系统。
-解决方案：新建磁盘分区，选择大小写敏感。
-编译Android时，jack-admin服务启动失败，百度搜索网上各种方法基本放屁。
-解决方案：移除 /etc/java-8..." />
+Mac分区挂载指令sudo diskutil mount  -mountPoint [path]   [uuid]
+
+
+
+" />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -78,11 +79,11 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              Android源码编译填坑
+              杂七杂八
             </h2>
             <div class="post-info">
               <span>
-                2021-04-26
+                2021-04-30
               </span>
               <span>
                 1 min read
@@ -93,10 +94,9 @@
             <div class="post-content-wrapper">
               <div class="post-content">
                 <ol>
-<li>编译Linux内核时报错，主要是MacOS是大小写不敏感的文件系统。<br>
-解决方案：新建磁盘分区，选择大小写敏感。</li>
-<li>编译Android时，jack-admin服务启动失败，百度搜索网上各种方法基本放屁。<br>
-解决方案：移除 /etc/java-8-openjdk/security/java.security文件中 TLSv1, TLSv1.1 字段。</li>
+<li>Mac分区挂载指令<pre><code>sudo diskutil mount  -mountPoint [path]   [uuid]
+</code></pre>
+</li>
 </ol>
 
               </div>
@@ -110,9 +110,9 @@
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://xiaoqianxin33.github.io/post/android-shi-yi-xiu-gai-qi-dong-zhuo-mian/">
+            <a href="https://xiaoqianxin33.github.io/post/android-yuan-ma-bian-yi-tian-keng/">
               <h3 class="post-title">
-                Android拾遗 - 修改启动桌面
+                Android源码编译填坑
               </h3>
             </a>
           </div>

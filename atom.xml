@@ -2,13 +2,26 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xiaoqianxin33.github.io</id>
     <title>肖前欣的博客</title>
-    <updated>2021-04-29T07:06:52.924Z</updated>
+    <updated>2021-05-11T03:03:05.440Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xiaoqianxin33.github.io"/>
     <link rel="self" href="https://xiaoqianxin33.github.io/atom.xml"/>
     <logo>https://xiaoqianxin33.github.io/images/avatar.png</logo>
     <icon>https://xiaoqianxin33.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 肖前欣的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[杂七杂八]]></title>
+        <id>https://xiaoqianxin33.github.io/post/za-qi-za-ba/</id>
+        <link href="https://xiaoqianxin33.github.io/post/za-qi-za-ba/">
+        </link>
+        <updated>2021-04-30T01:28:52.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>Mac分区挂载指令<pre><code>sudo diskutil mount  -mountPoint [path]   [uuid]
+</code></pre>
+</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Android源码编译填坑]]></title>
         <id>https://xiaoqianxin33.github.io/post/android-yuan-ma-bian-yi-tian-keng/</id>
@@ -18,25 +31,8 @@
         <content type="html"><![CDATA[<ol>
 <li>编译Linux内核时报错，主要是MacOS是大小写不敏感的文件系统。<br>
 解决方案：新建磁盘分区，选择大小写敏感。</li>
-<li>编译错误-build stopped: subcommand failed.<br>
-解决方案：一般是由于服务器进程 打开文件数受限制
-<ol>
-<li>1.vim /etc/security/limits.conf 添加如下的行</li>
-</ol>
-<pre><code>    # 解除服务器所有用户文件数 进程限制
-    *             soft       nofile      10240
-    *             hard       nofile      10240
-    *             soft       noproc      10240
-    *             hard       noproc      10240
-</code></pre>
-<ol start="2">
-<li>保存后，再输入ulimit -n 10240回车即可生效。</li>
-<li>提示 ulimit 命令 执行：<pre><code>sudo sh -c &quot;ulimit -n 65535 &amp;&amp; exec su $LOGNAME&quot;
-</code></pre>
-再执行第二个步骤即可.</li>
-<li>使用ulimit -a可以检查查看！</li>
-</ol>
-</li>
+<li>编译Android时，jack-admin服务启动失败，百度搜索网上各种方法基本放屁。<br>
+解决方案：移除 /etc/java-8-openjdk/security/java.security文件中 TLSv1, TLSv1.1 字段。</li>
 </ol>
 ]]></content>
     </entry>
