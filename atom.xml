@@ -2,13 +2,44 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xiaoqianxin33.github.io</id>
     <title>肖前欣的博客</title>
-    <updated>2021-05-11T03:03:05.440Z</updated>
+    <updated>2021-05-13T08:52:48.844Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xiaoqianxin33.github.io"/>
     <link rel="self" href="https://xiaoqianxin33.github.io/atom.xml"/>
     <logo>https://xiaoqianxin33.github.io/images/avatar.png</logo>
     <icon>https://xiaoqianxin33.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 肖前欣的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[Andoird设置应用为系统应用]]></title>
+        <id>https://xiaoqianxin33.github.io/post/andoird-she-zhi-ying-yong-wei-xi-tong-ying-yong/</id>
+        <link href="https://xiaoqianxin33.github.io/post/andoird-she-zhi-ying-yong-wei-xi-tong-ying-yong/">
+        </link>
+        <updated>2021-05-13T08:46:39.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>在Manifest中加入android:sharedUserId=”android.uid.system”这个属性<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+ &lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+      package=&quot;com.example.jant.addview&quot;
+      android:sharedUserId=&quot;android.uid.system&quot; &gt;
+&lt;application        ...（省略若干代码）
+&lt;/application&gt;      
+&lt;/manifest&gt;
+</code></pre>
+</li>
+<li>使用自己的签名文件，生成apk</li>
+<li>使用通用签名来重新给apk文件签名。
+<ol>
+<li>准备好platform.pk8、platform.x509.pem和签名工具signapk.jar（3个文件的下载地址），还有自己的apk，放在同一个文件夹下。platform.pk8、platform.x509.pem在源码的build/target/product/security目录中，签名工具网上可下载。</li>
+<li>终端输入指令</li>
+</ol>
+<pre><code> java -jar signapk.jar platform.x509.pem platform.pk8 your.apk  new.apk
+</code></pre>
+<ol start="3">
+<li>回车后我们的文件夹下已经多了一个new.apk文件了，这就将我们的应用打包成系统应用</li>
+</ol>
+</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[杂七杂八]]></title>
         <id>https://xiaoqianxin33.github.io/post/za-qi-za-ba/</id>

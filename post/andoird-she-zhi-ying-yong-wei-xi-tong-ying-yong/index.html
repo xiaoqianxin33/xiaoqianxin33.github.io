@@ -2,21 +2,17 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Flutter填坑 | 肖前欣的博客</title>
+<title>Andoird设置应用为系统应用 | 肖前欣的博客</title>
 <link rel="shortcut icon" href="https://xiaoqianxin33.github.io/favicon.ico?v=1620895935517">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://xiaoqianxin33.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="Flutter填坑 | 肖前欣的博客 - Atom Feed" href="https://xiaoqianxin33.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="Andoird设置应用为系统应用 | 肖前欣的博客 - Atom Feed" href="https://xiaoqianxin33.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
     <meta name="description" content="
-引入依赖之后运行iOS不成功，是由pod缓存导致。
-解决办法为修改Podfile文件最后一段
-
-post_install do |installer|
-installer.pods_project.targets.each do |tar..." />
+在Manifest中加入android:sharedUserId=”android.uid.system”这个属性&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&g..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -79,14 +75,14 @@ installer.pods_project.targets.each do |tar..." />
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              Flutter填坑
+              Andoird设置应用为系统应用
             </h2>
             <div class="post-info">
               <span>
-                2021-04-21
+                2021-05-13
               </span>
               <span>
-                2 min read
+                1 min read
               </span>
               
             </div>
@@ -94,51 +90,26 @@ installer.pods_project.targets.each do |tar..." />
             <div class="post-content-wrapper">
               <div class="post-content">
                 <ol>
-<li>引入依赖之后运行iOS不成功，是由pod缓存导致。<br>
-解决办法为修改Podfile文件最后一段</li>
-</ol>
-<pre><code>post_install do |installer|
-installer.pods_project.targets.each do |target|
-  flutter_additional_ios_build_settings(target)
-  target.build_configurations.each do |config|
-  config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET' #Remove custom deployment targets
-  end
-end
-end
-</code></pre>
-<ol start="2">
-<li>showDialog方法中自定义的widget设置 decoration圆边无效。<br>
-解决方案为<pre><code>Material(
-  type: MaterialType.card,
-  child:....
-)
+<li>在Manifest中加入android:sharedUserId=”android.uid.system”这个属性<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+ &lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+      package=&quot;com.example.jant.addview&quot;
+      android:sharedUserId=&quot;android.uid.system&quot; &gt;
+&lt;application        ...（省略若干代码）
+&lt;/application&gt;      
+&lt;/manifest&gt;
 </code></pre>
 </li>
-<li>新建混合开发项目运行iOS RUN启动崩溃，解决方法为</li>
+<li>使用自己的签名文件，生成apk</li>
+<li>使用通用签名来重新给apk文件签名。
+<ol>
+<li>准备好platform.pk8、platform.x509.pem和签名工具signapk.jar（3个文件的下载地址），还有自己的apk，放在同一个文件夹下。platform.pk8、platform.x509.pem在源码的build/target/product/security目录中，签名工具网上可下载。</li>
+<li>终端输入指令</li>
 </ol>
-<pre><code>编辑Scheme的Diagnostics，将API Validation选项设置为不选。
+<pre><code> java -jar signapk.jar platform.x509.pem platform.pk8 your.apk  new.apk
 </code></pre>
-<ol start="4">
-<li>Button,LinkWell水波纹效果被背景色覆盖问题。<br>
-解决方法为背景色用Lnk控件设置。</li>
+<ol start="3">
+<li>回车后我们的文件夹下已经多了一个new.apk文件了，这就将我们的应用打包成系统应用</li>
 </ol>
-<pre><code>Ink(
-      color: Colors.white,
-      child: InkWell(
-        onTap: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =&gt; PlayScreen(device.content)));
-        },
- )
-</code></pre>
-<ol start="5">
-<li>
-<p>Flutter调试过程的错误提醒都要注意修复，虽然在测试模式下看似没问题，但是如果不修复打包成Release安装后安卓端会呈现灰屏，无法使用。</p>
-</li>
-<li>
-<p>Xcode Archive的时候由于bitcode不成功，在pod里面将所有引入的pod的bitcode设置为false.</p>
 </li>
 </ol>
 
@@ -150,6 +121,15 @@ end
           </article>
         </div>
 
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://xiaoqianxin33.github.io/post/za-qi-za-ba/">
+              <h3 class="post-title">
+                杂七杂八
+              </h3>
+            </a>
+          </div>
         
 
         
