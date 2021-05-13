@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xiaoqianxin33.github.io</id>
     <title>肖前欣的博客</title>
-    <updated>2021-05-13T08:52:48.844Z</updated>
+    <updated>2021-05-13T08:56:52.537Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xiaoqianxin33.github.io"/>
     <link rel="self" href="https://xiaoqianxin33.github.io/atom.xml"/>
@@ -10,7 +10,25 @@
     <icon>https://xiaoqianxin33.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 肖前欣的博客</rights>
     <entry>
-        <title type="html"><![CDATA[Andoird设置应用为系统应用]]></title>
+        <title type="html"><![CDATA[Android拾遗-代码实现重启系统]]></title>
+        <id>https://xiaoqianxin33.github.io/post/android-shi-yi-dai-ma-shi-xian-chong-qi-xi-tong/</id>
+        <link href="https://xiaoqianxin33.github.io/post/android-shi-yi-dai-ma-shi-xian-chong-qi-xi-tong/">
+        </link>
+        <updated>2021-05-13T08:55:05.000Z</updated>
+        <content type="html"><![CDATA[<p>需要ROOT权限或者为系统应用</p>
+<ol>
+<li>在manifest中添加android.uid.system</li>
+<li>核心代码<pre><code>((ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE))
+                 .killBackgroundProcesses(context.getPackageName());
+ Runtime.getRuntime().exec(&quot;su&quot;);
+ Runtime.getRuntime().exec(&quot;reboot&quot;);
+</code></pre>
+</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Android拾遗-设置应用为系统应用]]></title>
         <id>https://xiaoqianxin33.github.io/post/andoird-she-zhi-ying-yong-wei-xi-tong-ying-yong/</id>
         <link href="https://xiaoqianxin33.github.io/post/andoird-she-zhi-ying-yong-wei-xi-tong-ying-yong/">
         </link>

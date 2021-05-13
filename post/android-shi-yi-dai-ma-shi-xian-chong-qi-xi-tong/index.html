@@ -2,21 +2,19 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>杂七杂八 | 肖前欣的博客</title>
+<title>Android拾遗-代码实现重启系统 | 肖前欣的博客</title>
 <link rel="shortcut icon" href="https://xiaoqianxin33.github.io/favicon.ico?v=1620896191223">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://xiaoqianxin33.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="杂七杂八 | 肖前欣的博客 - Atom Feed" href="https://xiaoqianxin33.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="Android拾遗-代码实现重启系统 | 肖前欣的博客 - Atom Feed" href="https://xiaoqianxin33.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="
-Mac分区挂载指令sudo diskutil mount  -mountPoint [path]   [uuid]
+    <meta name="description" content="需要ROOT权限或者为系统应用
 
-
-
-" />
+在manifest中添加android.uid.system
+核心代码((ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -79,11 +77,11 @@ Mac分区挂载指令sudo diskutil mount  -mountPoint [path]   [uuid]
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              杂七杂八
+              Android拾遗-代码实现重启系统
             </h2>
             <div class="post-info">
               <span>
-                2021-04-30
+                2021-05-13
               </span>
               <span>
                 1 min read
@@ -93,8 +91,13 @@ Mac分区挂载指令sudo diskutil mount  -mountPoint [path]   [uuid]
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <ol>
-<li>Mac分区挂载指令<pre><code>sudo diskutil mount  -mountPoint [path]   [uuid]
+                <p>需要ROOT权限或者为系统应用</p>
+<ol>
+<li>在manifest中添加android.uid.system</li>
+<li>核心代码<pre><code>((ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE))
+                 .killBackgroundProcesses(context.getPackageName());
+ Runtime.getRuntime().exec(&quot;su&quot;);
+ Runtime.getRuntime().exec(&quot;reboot&quot;);
 </code></pre>
 </li>
 </ol>
@@ -110,9 +113,9 @@ Mac分区挂载指令sudo diskutil mount  -mountPoint [path]   [uuid]
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://xiaoqianxin33.github.io/post/android-yuan-ma-bian-yi-tian-keng/">
+            <a href="https://xiaoqianxin33.github.io/post/andoird-she-zhi-ying-yong-wei-xi-tong-ying-yong/">
               <h3 class="post-title">
-                Android源码编译填坑
+                Android拾遗-设置应用为系统应用
               </h3>
             </a>
           </div>
